@@ -5,7 +5,7 @@
 
 ### tailscale
 ```bash
-curl https://raw.githubusercontent.com/hertzyang/bash-collection/refs/heads/master/tailscale.sh | bash -
+curl https://raw.githubusercontent.com/hertzyang/bash-collection/refs/heads/master/tailscale.sh | sudo bash -
 ```
 
 一键加固本机的 tailscaled 服务，降权运行的同时可以正常使用网络功能，包括 MagicDNS。
