@@ -1,0 +1,7 @@
+FROM diygod/rsshub:chromium-bundled
+
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:1.0.0 \
+  /lambda-adapter /opt/extensions/lambda-adapter
+
+ENV AWS_LWA_PORT=1200
+ENV LISTEN_INADDR_ANY=0

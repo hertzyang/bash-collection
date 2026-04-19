@@ -22,7 +22,32 @@ curl https://raw.githubusercontent.com/hertzyang/bash-collection/refs/heads/mast
  - 重新加载 systemd 配置并 * 重启 tailscaled *
 
  期望与目标：
- - 使用脚本后，tailscaled 以 `tailscale` 用户运行，且所有网络功能均正常。
+ - 使用脚本后，tailscaled 以 `tailscale` 用户运行，且所有网络功能均正常，特权功能如 ssh 服务器除外。
+
+### rsshub-lambda（ECR 一键构建）
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/hertzyang/bash-collection/refs/heads/master/rsshub.sh)
+```
+
+一键在当前 AWS Cloud Shell 环境中构建 RSSHub Lambda 容器镜像，并推送到用户自己的 Amazon ECR。
+
+先决条件：
+ - 拥有 AWS 账户及 CloudShell 使用权限
+
+脚本会做什么：
+ - 自动检测当前 AWS 账户 ID 和 region（兼容 CloudShell 环境变量）
+ - 检查并创建 ECR 仓库（若不存在）
+ - 登录 Amazon ECR
+ - 从远程 Dockerfile 构建镜像
+ - 打 tag 并推送到 ECR
+
+输出结果：
+ - 在 ECR 中生成镜像：
+   ```
+   <account-id>.dkr.ecr.<region>.amazonaws.com/rsshub-lambda:latest
+   ```
+ - 此镜像可被 AWS Lambda 使用
 
  ## 其他
  项目包含由大语言模型（LLM）生成的代码，不过，本项目中所有由 LLM 生成的代码均已由人工审计。
