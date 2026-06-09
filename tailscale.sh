@@ -54,8 +54,8 @@ cat > "$SERVICE_OVERRIDE_DIR/override.conf" <<'EOF'
 User=tailscale
 Group=tailscale
 
-AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
-CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 
 DeviceAllow=/dev/tun
 DeviceAllow=/dev/net/tun
